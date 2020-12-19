@@ -7,6 +7,13 @@ namespace GenericIEnumerable
 {
     class Program
     {
+        private string name;
+        public string LastName
+        {
+            get => name;
+            set => name = value ?? throw new ArgumentNullException(nameof(value), $"Name cannot be null");
+            //set => name = value ?? throw new ArgumentNullException(nameof(value), $"{nameof(Name)} cannot be null");
+        }
         static void Main(string[] args)
         {
 
