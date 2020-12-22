@@ -1,9 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 
-namespace CustomerIEnumerable
+namespace GenericIEnumerable
 {
-    public class People : IEnumerable<Person>
+    public class People : IEnumerable
     {
         private Person[] _people;
         public People(Person[] pArray)
@@ -16,15 +16,14 @@ namespace CustomerIEnumerable
             }
         }
 
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return (IEnumerator) GetEnumerator();
-        }
-        public IEnumerator<Person> GetEnumerator()
+        IEnumerator GetEnumerator()
         {
             return new PeopleNum(_people);
         }
 
-
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
     }
 }

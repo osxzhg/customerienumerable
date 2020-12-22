@@ -1,4 +1,4 @@
-﻿namespace CustomerIEnumerable
+﻿namespace GenericIEnumerable
 {
     public class Person
     {

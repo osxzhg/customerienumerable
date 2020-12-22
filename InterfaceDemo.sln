@@ -5,9 +5,9 @@ VisualStudioVersion = 16.0.30517.126
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "explicitlyImplement", "explicitlyImplement\explicitlyImplement.csproj", "{099F292C-0E79-4972-812D-BC6B305E2664}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GenericIEnumerable", "CustomerIEnumerable\GenericIEnumerable.csproj", "{C9C5843A-3F47-478C-BD85-E8C850601581}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GenericIEnumerable", "GenericIEnumerable\GenericIEnumerable.csproj", "{C9C5843A-3F47-478C-BD85-E8C850601581}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IEnumerable", "GenericIEnumerable\IEnumerable.csproj", "{A47F6528-2F34-4320-A317-355F0F491CA1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IEnumerable", "IEnumerable\IEnumerable.csproj", "{A47F6528-2F34-4320-A317-355F0F491CA1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

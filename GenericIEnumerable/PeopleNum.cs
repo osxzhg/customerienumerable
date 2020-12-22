@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace GenericIEnumerable
 {
-    public class PeopleNum : IEnumerator
+    public class PeopleNum : IEnumerator<Person>
     {
         private int position = -1;
         private Person[] _people;
@@ -22,6 +22,29 @@ namespace GenericIEnumerable
         public void Reset()
         {
             position = -1;
+        }
+        private bool disposedValue = false;
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!this.disposedValue)
+            {
+                if (disposing)
+                {
+                    // Dispose of managed resources.
+                }
+            }
+
+            this.disposedValue = true;
+        }
+
+        ~PeopleNum()
+        {
+            Dispose(false);
         }
 
         object IEnumerator.Current

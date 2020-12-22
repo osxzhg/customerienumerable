@@ -5,48 +5,82 @@ using System.Linq;
 
 namespace GenericIEnumerable
 {
+    interface IInterface
+    {
+        void method1(int num1);
+    }
+    interface IInterface2
+    {
+        void method2();
+    }
+    class MyClass : IInterface, IInterface2
+    {
+        public int MyProperty { get; set; }
+        public void method1(int num1)
+        {
+            Console.WriteLine(MyProperty);
+        }
+
+        public void method2()
+        {
+            throw new NotImplementedException();
+        }
+    }
     class Program
     {
-        private string name;
-        public string LastName
-        {
-            get => name;
-            set => name = value ?? throw new ArgumentNullException(nameof(value), $"Name cannot be null");
-            //set => name = value ?? throw new ArgumentNullException(nameof(value), $"{nameof(Name)} cannot be null");
-        }
         static void Main(string[] args)
         {
 
+            IInterface obj1 = new MyClass() { MyProperty=13};
+            obj1.method1(2);
+
+           
+           
 
             Person[] peopleArray = new Person[3]
-                       {
+            {
             new Person("John", "Smith"),
             new Person("Jim", "Johnson"),
             new Person("Sue", "Rabon"),
-                       };
+            };
+            // Covariance.
+            IEnumerable<string> strings = new List<string>();
+            
+            
+            // An object that is instantiated with a more derived type argument
+            // is assigned to an object instantiated with a less derived type argument.
+            // Assignment compatibility is preserved.
+            IEnumerable<object> objects = strings;
 
+
+ 
 
 
             string outStr = "";
 
             People peopleList = new People(peopleArray);
-            foreach (Person p in peopleList)
-                outStr=p.firstName + " " + p.lastName;
+            foreach (var p in peopleList)
+                outStr = p.firstName + " " + p.lastName;
+
+            IEnumerable<Person> people = new People(peopleArray);
+            foreach (var p in people)
+                outStr = p.firstName + " " + p.lastName;
 
 
-            IEnumerable peopleIEnumealeNormal = new People(peopleArray);
-            foreach(Person p in peopleIEnumealeNormal)
-                outStr= p.firstName + " " + p.lastName;
-
-            IEnumerator peopleIEnumeratorNormal = peopleIEnumealeNormal.GetEnumerator();
-            while(peopleIEnumeratorNormal.MoveNext())
+            IEnumerator<Person> peopleIEnumerator = people.GetEnumerator();
+            while (peopleIEnumerator.MoveNext())
             {
-                outStr=((Person) peopleIEnumeratorNormal.Current).firstName + " " +((Person) peopleIEnumeratorNormal.Current).lastName ; 
+                outStr = peopleIEnumerator.Current.firstName + "" + peopleIEnumerator.Current.lastName;
             }
 
-            
+            IEnumerable peopleIEnumerable = new People(peopleArray);
+            foreach (Person item in peopleIEnumerable)
+            {
+                outStr=item.firstName;
+
+            }
+
 
         }
     }
-    
 }
